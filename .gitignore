@@ -1,0 +1,27 @@
+### OSX ###
+.DS_Store
+
+*.pyc
+__pycache__
+*.zip
+/tests
+*~
+/data
+/dashboard/flask
+*.db
+config.py
+flask/
+venv/
+api_development/server_test.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+#sublime
+*.sublime-project
+*.sublime-workspace
+
+*.jpg
+*.html
+*.png
+/images
