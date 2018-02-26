@@ -241,12 +241,12 @@ cv2.imwrite("./images/pavao_GreenGreen.jpg", Gmerged)
 cv2.imwrite("./images/pavao_BlueBlue.jpg", Bmerged)
 
 
-# In[19]:
+# In[43]:
 
 
 def show(image):
     # Figure size in inches
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(8, 8))
     RGB_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     # Show image, with nearest neighbour interpolation
     plt.imshow(RGB_image, interpolation='nearest')
@@ -311,7 +311,7 @@ show(rgb_stack)
 
 # ## Histograms
 
-# They are good way to visualise indivu=idual colour components.
+# They are good way to visualise individual colour components.
 
 # In[23]:
 
@@ -328,7 +328,7 @@ plt.yticks(fontsize=14)
 color = ('b', 'g', 'r')
 
 
-# In[24]:
+# In[25]:
 
 
 # Viewing Separate Color Channels
@@ -342,7 +342,7 @@ for i, col in enumerate(color):
     plt.yticks(fontsize=14)
 
 
-# In[25]:
+# In[26]:
 
 
 def show_rgb_hist(image):
@@ -364,7 +364,7 @@ show_rgb_hist(RGB_image)
 
 # The brightest colours are green and blue. The bulk of the image is dark.
 
-# In[26]:
+# In[27]:
 
 
 def show_hsv_hist(image):
@@ -402,4 +402,66 @@ show_hsv_hist(hsv)
 
 im = cv2.imread("./images/pena_pavao.jpg")
 show(im)
+
+
+# ## Drawing
+
+# ### Create a black square
+
+# In[50]:
+
+
+im_sq = np.zeros((512, 512, 3), np.uint8) # 512 by 512 with 3 layers (BRG)
+show(im_sq)
+
+
+# ### Draw a line over it
+
+# In[51]:
+
+
+cv2.line(im_sq, (0,0), (511,511), (255,127,0), 5); #(start), (end), (BGR), (thickness)
+show(im_sq)
+
+
+# ### Draw rectangle over it
+
+# In[52]:
+
+
+cv2.rectangle(im_sq, (100, 100), (299, 250), (127, 50, 127), -1); # (start), (end), (BGR), (-1 = filled)
+show(im_sq)
+
+
+# ### Draw circle
+
+# In[61]:
+
+
+im_sq = np.zeros((512, 512, 3), np.uint8)
+cv2.circle(im_sq, (350, 350), 100, (10,200,50), -1) # center and radius
+show(im_sq)
+
+
+# ### Draw polygon
+
+# In[63]:
+
+
+# 4 points
+pts = np.array( [[10,50], [400,50], [90,200], [50,500]], np.int32)
+# polylines requires the points to be stored in the format performed by `reshape`
+pts = pts.reshape((-1,1,2))
+
+cv2.polylines(im_sq, [pts], True, (0,0,255), 3)
+show(im_sq)
+
+
+# ### Add text
+
+# In[67]:
+
+
+cv2.putText(im_sq, 'Hello World!', (75,290), cv2.FONT_HERSHEY_COMPLEX, 2, (255,255,255), 3);
+show(im_sq)
 
