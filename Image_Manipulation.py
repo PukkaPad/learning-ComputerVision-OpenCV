@@ -511,8 +511,53 @@ io.show
 
 # ### Other commonly used blurring methods in OpenCV
 
+# #### Averaging
+# Takes the average of all the pixels under kernel area and replace the central element. 
+
+# In[123]:
+
+
+blur = cv2.blur(image, (7,7))
+RGB_image = cv2.cvtColor(blur, cv2.COLOR_BGR2RGB)
+io.imshow(RGB_image)
+io.show()
+
+
 # #### Gaussian
 # 
 # https://en.wikipedia.org/wiki/Gaussian_blur
 # 
 # This blurring performs a weighted average of surrounding pixels based on te Gaussian distribution. 
+
+# In[119]:
+
+
+Gaussian = cv2.GaussianBlur(image, (7,7), 0)
+RGB_image = cv2.cvtColor(Gaussian, cv2.COLOR_BGR2RGB)
+io.imshow(RGB_image)
+io.show()
+
+
+# #### Median
+# Takes median of all the pixes under kernel area and entral element is replaced with this median value
+
+# In[121]:
+
+
+median = cv2.medianBlur(image, 7)
+RGB_image = cv2.cvtColor(median, cv2.COLOR_BGR2RGB)
+io.imshow(RGB_image)
+io.show()
+
+
+# #### Bilateral
+# Removes noise and keep edges sharp. Preserves horizontal and vertical lines.
+
+# In[122]:
+
+
+bilateral = cv2.bilateralFilter(image, 9, 75, 75)
+RGB_image = cv2.cvtColor(bilateral, cv2.COLOR_BGR2RGB)
+io.imshow(RGB_image)
+io.show()
+
