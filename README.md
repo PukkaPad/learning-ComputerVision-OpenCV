@@ -8,3 +8,8 @@ OpenCV stands for Open Source Computer Vision Library - the names says everythin
 
 ### Images
 I am using images from this [website](https://pixabay.com/). I am only playing with images of birds because I love birds!
+
+---
+
+1 - Basics
+2 - Image Manipulation

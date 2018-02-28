@@ -457,3 +457,62 @@ Not_sq = cv2.bitwise_not(square)
 io.imshow(Not_sq)
 io.show()
 
+
+# ## Convolutions and Bluring
+# 
+# And image has width( number of columns) and a height (number of rows). An image also have a depth, which are the number of channels in the image. For a RGB image, the depth is 3, one for each channel (R, G, B). So an image is a "big matrix" and a kernel is a "tiny matrix". 
+# 
+# The kernel sits on top og the "big matrix" and slides from left to right,  top to bottom, applying a mathematical operation (convolution) at each coordinate.
+# 
+# A convolution requires 3 components:
+# 1) image
+# 2) kernel matrix
+# 3) output image
+# 
+# Output_Image = Input_Image * Function_kernel_size
+
+# In[112]:
+
+
+image = cv2.imread("./images/out_2.png")
+RGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+io.imshow(RGB)
+io.show
+
+
+# #### Create a 3x3 and a 7x7 kernels
+
+# In[114]:
+
+
+kernel3x3=np.ones((3,3), np.float32)/9 # it's multiplied by 1/9 to normalise, i.e, to sum to 1
+kernel7x7=np.ones((7,7), np.float32)/49
+
+
+# ### Convolve
+
+# In[116]:
+
+
+blurred = cv2.filter2D(image, -1, kernel3x3)
+RGB = cv2.cvtColor(blurred, cv2.COLOR_BGR2RGB)
+io.imshow(RGB)
+io.show
+
+
+# In[117]:
+
+
+blurred = cv2.filter2D(image, -1, kernel7x7)
+RGB = cv2.cvtColor(blurred, cv2.COLOR_BGR2RGB)
+io.imshow(RGB)
+io.show
+
+
+# ### Other commonly used blurring methods in OpenCV
+
+# #### Gaussian
+# 
+# https://en.wikipedia.org/wiki/Gaussian_blur
+# 
+# This blurring performs a weighted average of surrounding pixels based on te Gaussian distribution. 
