@@ -12,4 +12,5 @@ I am using images from this [website](https://pixabay.com/). I am only playing w
 ---
 
 1 - Basics
+
 2 - Image Manipulation
