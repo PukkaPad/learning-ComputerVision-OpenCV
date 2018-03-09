@@ -974,3 +974,70 @@ canny = cv2.Canny(image, 10, 50)
 io.imshow(canny)
 io.show()
 
+
+# ## Perspective and Affine Transforms
+
+# ### Perspective Transform
+
+# In[42]:
+
+
+image = cv2.imread('./images/scan.jpg')
+io.imshow(image)
+io.show()
+# resolution is not good. I tried to solve but I had no success
+
+
+# In[43]:
+
+
+# Cordinates of the 4 corners of the original image
+points_A = np.float32([[320,15], [700,215], [85,610], [530,780]])
+
+# Cordinates of the 4 corners of the desired output, for a A4 paper
+points_B = np.float32([[0,0], [420,0], [0,594], [420,594]])
+ 
+# Use the two sets of four points to compute the Perspective Transformation matrix, M    
+M = cv2.getPerspectiveTransform(points_A, points_B)
+ 
+# Generate warped image    
+warped = cv2.warpPerspective(image, M, (420,594)) # final size is 420,594
+ 
+io.imshow(warped)
+io.show()
+
+
+# ### Affine Transform
+# Only need 3 coordinates
+
+# In[37]:
+
+
+image = cv2.imread('./images/ex2.jpg')
+rows,cols,ch = image.shape
+io.imshow(image)
+io.show()
+
+
+# In[39]:
+
+
+# Cordinates of the 4 corners of the original image
+points_A = np.float32([[320,15], [700,215], [85,610]])
+
+# Cordinates of the 4 corners of the desired output
+# using a ratio of an A4 Paper 1 : 1.41
+points_B = np.float32([[0,0], [420,0], [0,594]])
+
+
+# In[40]:
+
+
+# Use the two sets of four points to compute the Perspective Transformation matrix, M    
+M = cv2.getAffineTransform(points_A, points_B)
+
+warped = cv2.warpAffine(image, M, (cols, rows))
+
+io.imshow(warped)
+io.show()
+
