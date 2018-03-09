@@ -241,7 +241,7 @@ cv2.imwrite("./images/pavao_GreenGreen.jpg", Gmerged)
 cv2.imwrite("./images/pavao_BlueBlue.jpg", Bmerged)
 
 
-# In[43]:
+# In[19]:
 
 
 def show(image):
@@ -328,7 +328,7 @@ plt.yticks(fontsize=14)
 color = ('b', 'g', 'r')
 
 
-# In[25]:
+# In[24]:
 
 
 # Viewing Separate Color Channels
@@ -342,7 +342,7 @@ for i, col in enumerate(color):
     plt.yticks(fontsize=14)
 
 
-# In[26]:
+# In[25]:
 
 
 def show_rgb_hist(image):
@@ -364,7 +364,7 @@ show_rgb_hist(RGB_image)
 
 # The brightest colours are green and blue. The bulk of the image is dark.
 
-# In[27]:
+# In[26]:
 
 
 def show_hsv_hist(image):
@@ -397,7 +397,7 @@ def show_hsv_hist(image):
 show_hsv_hist(hsv)
 
 
-# In[28]:
+# In[27]:
 
 
 im = cv2.imread("./images/pena_pavao.jpg")
@@ -408,7 +408,7 @@ show(im)
 
 # ### Create a black square
 
-# In[50]:
+# In[28]:
 
 
 im_sq = np.zeros((512, 512, 3), np.uint8) # 512 by 512 with 3 layers (BRG)
@@ -417,7 +417,7 @@ show(im_sq)
 
 # ### Draw a line over it
 
-# In[51]:
+# In[29]:
 
 
 cv2.line(im_sq, (0,0), (511,511), (255,127,0), 5); #(start), (end), (BGR), (thickness)
@@ -426,7 +426,7 @@ show(im_sq)
 
 # ### Draw rectangle over it
 
-# In[52]:
+# In[30]:
 
 
 cv2.rectangle(im_sq, (100, 100), (299, 250), (127, 50, 127), -1); # (start), (end), (BGR), (-1 = filled)
@@ -435,7 +435,7 @@ show(im_sq)
 
 # ### Draw circle
 
-# In[61]:
+# In[31]:
 
 
 im_sq = np.zeros((512, 512, 3), np.uint8)
@@ -445,7 +445,7 @@ show(im_sq)
 
 # ### Draw polygon
 
-# In[63]:
+# In[32]:
 
 
 # 4 points
@@ -459,7 +459,7 @@ show(im_sq)
 
 # ### Add text
 
-# In[67]:
+# In[33]:
 
 
 cv2.putText(im_sq, 'Hello World!', (75,290), cv2.FONT_HERSHEY_COMPLEX, 2, (255,255,255), 3);
